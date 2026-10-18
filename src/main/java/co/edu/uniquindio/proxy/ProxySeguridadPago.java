@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proxy;
 
 import co.edu.uniquindio.adapter.StripeUSAAdapter;
+import co.edu.uniquindio.adapter.StripeUSA;
 import co.edu.uniquindio.facade.ProcesadorPago;
 import co.edu.uniquindio.util.Formato;
 
@@ -23,7 +24,7 @@ public class ProxySeguridadPago implements ProcesadorPago {
         //Control tope de dinero
 
         if(montoCop > 5000000){
-            System.out.println("[ACCESO DENEGADO] El monto " + Formato.cop(montoCOP) + " COP supera el tope de $5.000.000 COP. Transacción rechazada.");
+            System.out.println("[ACCESO DENEGADO] El monto " + Formato.cop(montoCop) + " COP supera el tope de $5.000.000 COP. Transacción rechazada.");
             return;
         }
 
@@ -31,14 +32,14 @@ public class ProxySeguridadPago implements ProcesadorPago {
 
         if(procesadorReal == null){
             System.out.println("[PROXY] Datos válidos. Conectando con el procesador de pagos por primera vez...");
-            procesadorReal = new StripeUSAAdapter(new StripeUSAAdapter());
+            procesadorReal = new StripeUSAAdapter(new StripeUSA());
         }
 
         // delegacion al procesador Real
 
         procesadorReal.cobrarEnPesos(usuario, montoCop);
 
-        System.out.println("[AUDITORÍA: Transacción aprobada para " + usuario + " por " + Formato.cop(montoCOP) + " COP]");
+        System.out.println("[AUDITORÍA: Transacción aprobada para " + usuario + " por " + Formato.cop(montoCop) + " COP]");
         }
 
     }
