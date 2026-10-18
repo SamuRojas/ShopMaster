@@ -2,7 +2,7 @@ package co.edu.uniquindio.composite;
 
 import co.edu.uniquindio.util.Formato;
 
-public class ProductoIndividual implements Producto {
+public class    ProductoIndividual implements Producto {
 
     private final String nombre;
     private final double precio;

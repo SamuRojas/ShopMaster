@@ -1,7 +1,6 @@
 package co.edu.uniquindio.facade;
 
-import co.edu.uniquindio.adapter.AdaptadorStripeUSA;
-import co.edu.uniquindio.adapter.StripeUSAGateway;
+
 import co.edu.uniquindio.composite.Producto;
 import co.edu.uniquindio.decorator.EmpaqueRegalo;
 import co.edu.uniquindio.decorator.GarantiaExtendida;
@@ -14,8 +13,7 @@ import java.util.List;
 
 public class ShopMasterFacade {
 
-    private final ProcesadorPago procesador =
-            new ProxySeguridadPago(new AdaptadorStripeUSA(new StripeUSAGateway()));
+    private final ProcesadorPago procesador = new ProxySeguridadPago ();
 
     public void ejecutarCompraRapida(String usuario, Producto producto, List<TipoServicio> extras) {
         Producto pedido = construirPedido(producto, extras);
