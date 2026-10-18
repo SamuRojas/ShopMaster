@@ -8,7 +8,7 @@ import co.edu.uniquindio.facade.TipoServicio;
 
 import java.util.List;
 
-public class main {
+public class Main {
     public static void main(String[] args){
 
         ShopMasterFacade tienda = new ShopMasterFacade();
@@ -21,6 +21,7 @@ public class main {
         Combo comboGamer = new Combo("Combo Gamer");
         comboGamer.agregar(new ProductoIndividual("Monitor", 800000));
         comboGamer.agregar(new ProductoIndividual("Teclado", 200000));
+        comboGamer.agregar(KitLimpieza);
 
         tienda.ejecutarCompraRapida("cliente_vip", comboGamer,
                 List.of(TipoServicio.GARANTIA_EXTENDIDA, TipoServicio.EMPAQUE_REGALO));
